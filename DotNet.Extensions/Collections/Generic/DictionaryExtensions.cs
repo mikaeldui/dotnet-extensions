@@ -23,5 +23,21 @@ namespace System.Collections.Generic
                 source[replacement] = value;
             }
         }
+
+        /// <summary>
+        /// Guaranteed to mess up the order of the dictionary. Don't use dictionaries if you want stuff ordered.
+        /// </summary>
+        public static void ReplaceKeys<TValue>(this IDictionary<string, TValue> source, IReadOnlyDictionary<string, string> replacements)
+        {
+            var needsReplacement = source.Keys.Where(k => replacements.ContainsKey(k)).ToArray();
+
+            foreach (var key in needsReplacement)
+            {
+                var replacement = replacements[key];
+                TValue value = source[key];
+                source.Remove(key);
+                source[replacement] = value;
+            }
+        }
     }
 }
