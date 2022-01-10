@@ -4,7 +4,7 @@ using System.Text;
 
 namespace System.Net.Http.Json
 {
-    internal static class HttpClientJsonExtensions
+    public static class HttpClientJsonExtensions
     {
         public static async Task<TResult?> PostAsJsonAsync<TValue, TResult>(this HttpClient httpClient, string? requestUri, TValue value)
         {
