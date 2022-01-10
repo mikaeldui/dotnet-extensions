@@ -4,6 +4,26 @@
     {
         #region Casing
 
+#if NETSTANDARD
+
+        public static string FirstCharToUpper(this string input) =>
+            input switch
+            {
+                null => throw new ArgumentNullException(nameof(input)),
+                "" => throw new ArgumentException($"{nameof(input)} cannot be empty", nameof(input)),
+                _ => string.Concat(input[0].ToString().ToUpper(), input.Substring(1))
+            };
+
+        public static string FirstCharToLower(this string input) =>
+            input switch
+            {
+                null => throw new ArgumentNullException(nameof(input)),
+                "" => throw new ArgumentException($"{nameof(input)} cannot be empty", nameof(input)),
+                _ => string.Concat(input[0].ToString().ToLower(), input.Substring(1))
+            };
+
+#else
+
         public static string FirstCharToUpper(this string input) =>
             input switch
             {
@@ -19,6 +39,8 @@
                 "" => throw new ArgumentException($"{nameof(input)} cannot be empty", nameof(input)),
                 _ => string.Concat(input[0].ToString().ToLower(), input.AsSpan(1))
             };
+
+#endif
 
         /// <summary> Makes the string look like "ThisIsAString".</summary>
         public static string ToPascalCase(this string input)
@@ -59,6 +81,11 @@
 
         #region Split
 
+#if NETSTANDARD2_0
+        public static string[] Split(this string input, char separator, StringSplitOptions options) =>
+            input.Split(new char[] { separator }, options);
+#endif
+
         public static string[] SplitAndRemoveEmptyEntries(this string input, char separator) =>
             input.Split(separator, StringSplitOptions.RemoveEmptyEntries);
 
@@ -86,9 +113,19 @@
 
         public static string Remove(this string input, string toRemove) => input.Replace(toRemove, "");
 
+#if NETSTANDARD
+
+        public static string RemoveStart(this string input, string toRemove) => input.StartsWith(toRemove) ? input.Substring(toRemove.Length) : input;
+
+        public static string RemoveEnd(this string input, string toRemove) => input.EndsWith(toRemove) ? input.Substring(0, input.Length - toRemove.Length) : input;
+
+#else
+
         public static string RemoveStart(this string input, string toRemove) => input.StartsWith(toRemove) ? input[toRemove.Length..] : input;
 
         public static string RemoveEnd(this string input, string toRemove) => input.EndsWith(toRemove) ? input[..^toRemove.Length] : input;
+
+#endif
 
         public static string RemoveChars(this string input, params char[] toRemove)
         {
