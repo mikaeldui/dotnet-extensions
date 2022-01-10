@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0;netstandard2.1;net5.0;net6.0</TargetFramework>
+	<LangVersion>latest</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>System</RootNamespace>
+    <PackageId>MikaelDui.Extensions</PackageId>
+    <Authors>Mikael Dúi Bolinder</Authors>
+    <Description>My frequently used .NET extensions. Examples: string.Between(), string.ToInt().</Description>
+    <PackageProjectUrl>https://github.com/mikaeldui/dotnet-extensions</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/mikaeldui/dotnet-extensions</RepositoryUrl>
+    <PackageTags>Extensions; System</PackageTags>
+    <PackageLicenseExpression>Unlicense</PackageLicenseExpression>
+    <PackageIcon>Extensions-512x512.png</PackageIcon>
+    <AssemblyName>MikaelDui.Extensions</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\Extensions-512x512.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
