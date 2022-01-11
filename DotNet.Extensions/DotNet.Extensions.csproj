@@ -33,8 +33,9 @@
 	<PackageReference Include="System.Net.Http.Json" Version="*" />
   </ItemGroup>
 
-<Import Project="..\DotNet.Extensions.NetStandard\DotNet.Extensions.NetStandard.projitems" Label="Shared" Condition="'$(TargetFramework.TrimEnd(`.0123456789`))' == 'netstandard'" />
+    <Import Project="..\DotNet.Extensions.Net\DotNet.Extensions.Net.projitems" Label="Shared" Condition="'$(TargetFramework.TrimEnd(`.0123456789`))' != 'netstandard'" />
+	
+    <Import Project="..\DotNet.Extensions.NetStandard\DotNet.Extensions.NetStandard.projitems" Label="Shared" Condition="'$(TargetFramework.TrimEnd(`.0123456789`))' == 'netstandard'" />
 
-<Import Project="..\DotNet.Extensions.Net\DotNet.Extensions.Net.projitems" Label="Shared" Condition="'$(TargetFramework.TrimEnd(`.0123456789`))' != 'netstandard'" />
 
 </Project>

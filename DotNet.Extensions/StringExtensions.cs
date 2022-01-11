@@ -1,6 +1,6 @@
 ﻿namespace System
 {
-    public static class StringExtensions
+    public static partial class StringExtensions
     {
         #region Casing
 
@@ -140,5 +140,44 @@
         public static double ToDouble(this string input) => double.Parse(input);
 
         #endregion
+
+        #region Partials
+
+        public static partial string FirstCharToUpper(this string input);
+
+        public static partial string FirstCharToLower(this string input);
+
+        public static partial string Join(this string[] input, string separator);
+
+        public static partial string Join(this string[] input, char separator);
+
+        public static partial string Join(this IEnumerable<string> input, string separator);
+
+        public static partial string Join(this IEnumerable<string> input, char separator);
+
+        public static partial IEnumerable<string> SkipLast(this string[] input, int count);
+
+        public static partial IEnumerable<string> SkipLast(this string[] input);
+
+        public static partial IEnumerable<string> SkipLast(this ICollection<string> input, int count);
+
+        public static partial IEnumerable<string> SkipLast(this ICollection<string> input);
+
+        public static partial IEnumerable<string> SkipLast(this IEnumerable<string> input);
+
+        public static partial bool StartsWith(this string @this, char value);
+
+        public static partial bool EndsWith(this string @this, char value);
+
+        public static partial string[] Split(this string input, char separator);
+
+        public static partial string[] Split(this string input, char separator, StringSplitOptions options);
+
+        public static partial string[] Split(this string input, string separator);
+
+        public static partial string[] Split(this string input, string separator, StringSplitOptions options);
+
+
+        #endregion Partials
     }
 }
