@@ -38,6 +38,18 @@ namespace System
         public static string[] Split(this string input, string separator, StringSplitOptions options) =>
             input.Split(new string[] { separator }, options);
 
+        public static string Join(this string[] input, string separator) =>
+            string.Join(separator, input);
+
+        public static string Join(this string[] input, char separator) =>
+            string.Join(separator.ToString(), input);
+
+        public static string Join(this IEnumerable<string> input, string separator) =>
+            string.Join(separator, input.ToArray());
+
+        public static string Join(this IEnumerable<string> input, char separator) =>
+            string.Join(separator.ToString(), input.ToArray());
+
         public static IEnumerable<string> SkipLast(this IEnumerable<string> input)
         {
             using (IEnumerator<string> iterator = input.GetEnumerator())
