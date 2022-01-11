@@ -29,9 +29,8 @@
     </None>
   </ItemGroup>
 
-  <ItemGroup>
-	  <PackageReference Include="System.Net.Http.Json" Version="*" Condition="'$(TargetFramework)' == 'netstandard2.0'" />
-	  <PackageReference Include="System.Net.Http.Json" Version="*" Condition="'$(TargetFramework)' == 'netstandard2.1'" />
+  <ItemGroup Condition="'$(TargetFramework.TrimEnd(`.0123456789`))' == 'netstandard'">
+	  <PackageReference Include="System.Net.Http.Json" Version="*" />
   </ItemGroup>
 
 </Project>
