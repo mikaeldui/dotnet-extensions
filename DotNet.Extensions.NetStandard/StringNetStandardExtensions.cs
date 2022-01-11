@@ -23,10 +23,20 @@ namespace System
             };
 
         public static bool StartsWith(this string @this, char value) => @this[0].Equals(value);
+
         public static bool EndsWith(this string @this, char value) => @this[@this.Length - 1].Equals(value);
+
+        public static string[] Split(this string input, char separator) =>
+            input.Split(new char[] { separator });
 
         public static string[] Split(this string input, char separator, StringSplitOptions options) =>
             input.Split(new char[] { separator }, options);
+
+        public static string[] Split(this string input, string separator) =>
+            input.Split(new string[] { separator }, StringSplitOptions.None);
+
+        public static string[] Split(this string input, string separator, StringSplitOptions options) =>
+            input.Split(new string[] { separator }, options);
 
         public static IEnumerable<string> SkipLast(this IEnumerable<string> input)
         {
