@@ -21,5 +21,17 @@ namespace System
                 "" => throw new ArgumentException($"{nameof(input)} cannot be empty", nameof(input)),
                 _ => string.Concat(input[0].ToString().ToLower(), input.AsSpan(1))
             };
+
+        public static string Join(this string[] input, string separator) =>
+            string.Join(separator, input);
+
+        public static string Join(this string[] input, char separator) =>
+            string.Join(separator, input);
+
+        public static string Join(this IEnumerable<string> input, string separator) =>
+            string.Join(separator, input);
+
+        public static string Join(this IEnumerable<string> input, char separator) =>
+            string.Join(separator, input);
     }
 }
