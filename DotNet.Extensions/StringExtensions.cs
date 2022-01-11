@@ -155,16 +155,6 @@
 
         public static partial string Join(this IEnumerable<string> input, char separator);
 
-        public static partial IEnumerable<string> SkipLast(this string[] input, int count);
-
-        public static partial IEnumerable<string> SkipLast(this string[] input);
-
-        public static partial IEnumerable<string> SkipLast(this ICollection<string> input, int count);
-
-        public static partial IEnumerable<string> SkipLast(this ICollection<string> input);
-
-        public static partial IEnumerable<string> SkipLast(this IEnumerable<string> input);
-
         public static partial bool StartsWith(this string @this, char value);
 
         public static partial bool EndsWith(this string @this, char value);

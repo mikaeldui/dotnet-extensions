@@ -35,31 +35,6 @@ namespace System
         public static partial string Join(this IEnumerable<string> input, char separator) =>
             string.Join(separator.ToString(), input.ToArray());
 
-        public static partial IEnumerable<string> SkipLast(this string[] input, int count) => 
-            input.TakeWhile((item, index) => index < input.Length - count);
-
-        public static partial IEnumerable<string> SkipLast(this string[] input) => input.SkipLast(1);
-
-        public static partial IEnumerable<string> SkipLast(this ICollection<string> input, int count) =>
-            input.TakeWhile((item, index) => index < input.Count - count);
-
-        public static partial IEnumerable<string> SkipLast(this ICollection<string> input)=> input.SkipLast(1);
-
-        public static partial IEnumerable<string> SkipLast(this IEnumerable<string> input)
-        {
-            using IEnumerator<string> iterator = input.GetEnumerator();
-            if (!iterator.MoveNext())
-            {
-                yield break;
-            }
-            string previous = iterator.Current;
-            while (iterator.MoveNext())
-            {
-                yield return previous;
-                previous = iterator.Current;
-            }
-        }
-
         public static partial bool StartsWith(this string @this, char value) => @this[0].Equals(value);
 
         public static partial bool EndsWith(this string @this, char value) => @this[@this.Length - 1].Equals(value);
