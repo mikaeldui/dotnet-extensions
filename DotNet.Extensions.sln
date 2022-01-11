@@ -5,9 +5,18 @@ VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNet.Extensions", "DotNet.Extensions\DotNet.Extensions.csproj", "{5C264E29-B576-4F58-9C94-1D7A5BF326C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet.Extensions.Tests", "DotNet.Extensions.Tests\DotNet.Extensions.Tests.csproj", "{371C960A-30CB-47A5-B096-8EA64FF9B5D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNet.Extensions.Tests", "DotNet.Extensions.Tests\DotNet.Extensions.Tests.csproj", "{371C960A-30CB-47A5-B096-8EA64FF9B5D0}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "DotNet.Extensions.NetStandard", "DotNet.Extensions.NetStandard\DotNet.Extensions.NetStandard.shproj", "{3E2D5EA1-8B19-4B7D-9E20-863E534B465E}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "DotNet.Extensions.Net", "DotNet.Extensions.Net\DotNet.Extensions.Net.shproj", "{0265EBB6-8E92-4020-B049-7EECD2C8B815}"
 EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		DotNet.Extensions.Net\DotNet.Extensions.Net.projitems*{0265ebb6-8e92-4020-b049-7eecd2c8b815}*SharedItemsImports = 13
+		DotNet.Extensions.NetStandard\DotNet.Extensions.NetStandard.projitems*{3e2d5ea1-8b19-4b7d-9e20-863e534b465e}*SharedItemsImports = 13
+		DotNet.Extensions.NetStandard\DotNet.Extensions.NetStandard.projitems*{5c264e29-b576-4f58-9c94-1d7a5bf326c1}*SharedItemsImports = 5
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU

@@ -4,44 +4,6 @@
     {
         #region Casing
 
-#if NETSTANDARD
-
-        public static string FirstCharToUpper(this string input) =>
-            input switch
-            {
-                null => throw new ArgumentNullException(nameof(input)),
-                "" => throw new ArgumentException($"{nameof(input)} cannot be empty", nameof(input)),
-                _ => string.Concat(input[0].ToString().ToUpper(), input.Substring(1))
-            };
-
-        public static string FirstCharToLower(this string input) =>
-            input switch
-            {
-                null => throw new ArgumentNullException(nameof(input)),
-                "" => throw new ArgumentException($"{nameof(input)} cannot be empty", nameof(input)),
-                _ => string.Concat(input[0].ToString().ToLower(), input.Substring(1))
-            };
-
-#else
-
-        public static string FirstCharToUpper(this string input) =>
-            input switch
-            {
-                null => throw new ArgumentNullException(nameof(input)),
-                "" => throw new ArgumentException($"{nameof(input)} cannot be empty", nameof(input)),
-                _ => string.Concat(input[0].ToString().ToUpper(), input.AsSpan(1))
-            };
-
-        public static string FirstCharToLower(this string input) =>
-            input switch
-            {
-                null => throw new ArgumentNullException(nameof(input)),
-                "" => throw new ArgumentException($"{nameof(input)} cannot be empty", nameof(input)),
-                _ => string.Concat(input[0].ToString().ToLower(), input.AsSpan(1))
-            };
-
-#endif
-
         /// <summary> Makes the string look like "ThisIsAString".</summary>
         public static string ToPascalCase(this string input)
         {
@@ -80,11 +42,6 @@
         #endregion Casing
 
         #region Split
-
-#if NETSTANDARD2_0
-        public static string[] Split(this string input, char separator, StringSplitOptions options) =>
-            input.Split(new char[] { separator }, options);
-#endif
 
         public static string[] SplitAndRemoveEmptyEntries(this string input, char separator) =>
             input.Split(separator, StringSplitOptions.RemoveEmptyEntries);
