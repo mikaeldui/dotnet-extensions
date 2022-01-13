@@ -6,7 +6,7 @@ namespace System.Reflection
 {
     public static class TypeExtensions
     {
-        public static bool IsSubTypeOfRawGeneric(this Type generic, Type toCheck)
+        public static bool IsSubclassOfRawGeneric(this Type generic, Type toCheck)
         {
             while (toCheck != null && toCheck != typeof(object))
             {
