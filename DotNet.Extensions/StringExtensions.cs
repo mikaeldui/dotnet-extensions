@@ -29,6 +29,11 @@
         /// <summary> Makes the string look like "thisIsAString".</summary>
         public static string ToCamelCase(this string input) => input.ToPascalCase().FirstCharToLower();
 
+        public static partial string FirstCharToUpper(this string input);
+
+        public static partial string FirstCharToLower(this string input);
+
+
         #region Bools
 
         public static bool IsLower(this string input) => input == input.ToLower();
@@ -45,6 +50,14 @@
 
         public static string[] SplitAndRemoveEmptyEntries(this string input, char separator) =>
             input.Split(separator, StringSplitOptions.RemoveEmptyEntries);
+
+        public static partial string[] Split(this string input, char separator);
+
+        public static partial string[] Split(this string input, char separator, StringSplitOptions options);
+
+        public static partial string[] Split(this string input, string separator);
+
+        public static partial string[] Split(this string input, string separator, StringSplitOptions options);
 
         #endregion Split
 
@@ -78,6 +91,11 @@
 
             return input[pFrom..pTo];
         }
+
+        public static partial bool StartsWith(this string @this, char value);
+
+        public static partial bool EndsWith(this string @this, char value);
+
 
         #endregion Substring
 
@@ -131,33 +149,17 @@
 
         #endregion
 
-        #region Partials
+        #region Join
 
-        public static partial string FirstCharToUpper(this string input);
-
-        public static partial string FirstCharToLower(this string input);
-
-        public static partial string Join(this string[] input, string separator);
+        public static string Join(this string[] input, string separator) => string.Join(separator, input);
 
         public static partial string Join(this string[] input, char separator);
 
-        public static partial string Join(this IEnumerable<string> input, string separator);
+        public static string Join(this IEnumerable<string> input, string separator) => string.Join(separator, input);
 
         public static partial string Join(this IEnumerable<string> input, char separator);
 
-        public static partial bool StartsWith(this string @this, char value);
 
-        public static partial bool EndsWith(this string @this, char value);
-
-        public static partial string[] Split(this string input, char separator);
-
-        public static partial string[] Split(this string input, char separator, StringSplitOptions options);
-
-        public static partial string[] Split(this string input, string separator);
-
-        public static partial string[] Split(this string input, string separator, StringSplitOptions options);
-
-
-        #endregion Partials
+        #endregion Join
     }
 }

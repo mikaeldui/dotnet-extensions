@@ -20,11 +20,7 @@ namespace System
                 _ => string.Concat(input[0].ToString().ToLower(), input.AsSpan(1))
             };
 
-        public static partial string Join(this string[] input, string separator) => string.Join(separator, input);
-
         public static partial string Join(this string[] input, char separator) => string.Join(separator, input);
-
-        public static partial string Join(this IEnumerable<string> input, string separator) => string.Join(separator, input);
 
         public static partial string Join(this IEnumerable<string> input, char separator) => string.Join(separator, input);
 
