@@ -33,7 +33,7 @@ namespace System.Linq
                 using IEnumerator<T> iterator = input.GetEnumerator();
                 if (!iterator.MoveNext())
                     yield break;
-                Queue<T> items = new Queue<T>(count);
+                Queue<T> items = new(count);
                 items.Enqueue(iterator.Current);
                 for (int i = 1; i < count && iterator.MoveNext(); i++)
                     items.Enqueue(iterator.Current);

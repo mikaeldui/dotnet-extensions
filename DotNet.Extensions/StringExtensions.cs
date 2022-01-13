@@ -7,19 +7,19 @@
         /// <summary> Makes the string look like "ThisIsAString".</summary>
         public static string ToPascalCase(this string input)
         {
-            if (input.Contains('-')) // kebab
+            if (input.Contains('-')) // kebab-case
             {
-                return String.Join("", input.SplitAndRemoveEmptyEntries('-').Select(p => p.FirstCharToUpper()));
+                return input.SplitAndRemoveEmptyEntries('-').Select(p => p.FirstCharToUpper()).Join("");
             }
-            else if (input.Contains('_')) // snake
+            else if (input.Contains('_')) // snake_case
             {
-                return String.Join("", input.SplitAndRemoveEmptyEntries('_').Select(p => p.FirstCharToUpper()));
+                return input.SplitAndRemoveEmptyEntries('_').Select(p => p.FirstCharToUpper()).Join("");
             }
-            else if (input[0].IsLower()) // camel
+            else if (input[0].IsLower()) // camelCase
             {
                 return input.FirstCharToUpper();
             }
-            else if (input.IsScreaming()) // scream
+            else if (input.IsScreaming()) // SCREAMING
             {
                 return input.ToLower().FirstCharToUpper();
             }
@@ -28,6 +28,11 @@
 
         /// <summary> Makes the string look like "thisIsAString".</summary>
         public static string ToCamelCase(this string input) => input.ToPascalCase().FirstCharToLower();
+
+        public static partial string FirstCharToUpper(this string input);
+
+        public static partial string FirstCharToLower(this string input);
+
 
         #region Bools
 
@@ -46,6 +51,14 @@
         public static string[] SplitAndRemoveEmptyEntries(this string input, char separator) =>
             input.Split(separator, StringSplitOptions.RemoveEmptyEntries);
 
+        public static partial string[] Split(this string input, char separator);
+
+        public static partial string[] Split(this string input, char separator, StringSplitOptions options);
+
+        public static partial string[] Split(this string input, string separator);
+
+        public static partial string[] Split(this string input, string separator, StringSplitOptions options);
+
         #endregion Split
 
         #region Substring
@@ -63,21 +76,26 @@
             }
 
             if (digits.Length > 0)
-                return int.Parse(digits);
+                return int.Parse(new string(digits.Reverse().ToArray()));
             else
                 throw new ArgumentException("The string didn't end in digits!");
         }
 
         public static string AfterLast(this string input, char value) =>
-            input.Substring(input.LastIndexOf(value) + 1);
+            input[(input.LastIndexOf(value) + 1)..];
 
         public static string Between(this string input, string left, string right)
         {
             int pFrom = input.IndexOf(left) + right.Length;
             int pTo = input.IndexOf(right, pFrom);
 
-            return input.Substring(pFrom, pTo - pFrom);
+            return input[pFrom..pTo];
         }
+
+        public static partial bool StartsWith(this string @this, char value);
+
+        public static partial bool EndsWith(this string @this, char value);
+
 
         #endregion Substring
 
@@ -96,31 +114,20 @@
         public static string ReplaceEnd(this string input, string original, string replacement) =>
             input.EndsWith(original) ? input.RemoveEnd(original) + replacement : input;
 
-
         #endregion Replace
 
         #region Remove
 
         public static string Remove(this string input, string toRemove) => input.Replace(toRemove, "");
 
-#if NETSTANDARD
-
-        public static string RemoveStart(this string input, string toRemove) => input.StartsWith(toRemove) ? input.Substring(toRemove.Length) : input;
-
-        public static string RemoveEnd(this string input, string toRemove) => input.EndsWith(toRemove) ? input.Substring(0, input.Length - toRemove.Length) : input;
-
-#else
-
         public static string RemoveStart(this string input, string toRemove) => input.StartsWith(toRemove) ? input[toRemove.Length..] : input;
 
         public static string RemoveEnd(this string input, string toRemove) => input.EndsWith(toRemove) ? input[..^toRemove.Length] : input;
 
-#endif
-
         public static string RemoveChars(this string input, params char[] toRemove)
         {
             foreach (var c in toRemove)
-                input = input.Replace(c.ToString(), "");
+                input = input.Remove(c.ToString());
             return input;
         }
 
@@ -137,37 +144,22 @@
         #region Casting
 
         public static int ToInt(this string input) => int.Parse(input);
+
         public static double ToDouble(this string input) => double.Parse(input);
 
         #endregion
 
-        #region Partials
+        #region Join
 
-        public static partial string FirstCharToUpper(this string input);
-
-        public static partial string FirstCharToLower(this string input);
-
-        public static partial string Join(this string[] input, string separator);
+        public static string Join(this string[] input, string separator) => string.Join(separator, input);
 
         public static partial string Join(this string[] input, char separator);
 
-        public static partial string Join(this IEnumerable<string> input, string separator);
+        public static string Join(this IEnumerable<string> input, string separator) => string.Join(separator, input);
 
         public static partial string Join(this IEnumerable<string> input, char separator);
 
-        public static partial bool StartsWith(this string @this, char value);
 
-        public static partial bool EndsWith(this string @this, char value);
-
-        public static partial string[] Split(this string input, char separator);
-
-        public static partial string[] Split(this string input, char separator, StringSplitOptions options);
-
-        public static partial string[] Split(this string input, string separator);
-
-        public static partial string[] Split(this string input, string separator, StringSplitOptions options);
-
-
-        #endregion Partials
+        #endregion Join
     }
 }
