@@ -19,5 +19,14 @@ namespace DotNet.Extensions.Tests
 
            Assert.AreEqual(digits, result);
         }
+
+        [TestMethod]
+        public void Between()
+        {
+            string @string = "/summoner?summoner=EngIishman&region=EUW";
+            var result = @string.Between("summoner=", "&region");
+
+            Assert.AreEqual("EngIishman", result);
+        }
     }
 }

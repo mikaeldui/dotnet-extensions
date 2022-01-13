@@ -86,8 +86,8 @@
 
         public static string Between(this string input, string left, string right)
         {
-            int pFrom = input.IndexOf(left) + right.Length;
-            int pTo = input.IndexOf(right, pFrom);
+            int pFrom = input.IndexOf(left) + left.Length;
+            int pTo = input.IndexOf(right);
 
             return input[pFrom..pTo];
         }
