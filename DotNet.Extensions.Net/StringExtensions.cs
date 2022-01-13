@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Text;
+﻿using System.ComponentModel;
 
 namespace System
 {
@@ -33,7 +30,7 @@ namespace System
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public static partial bool StartsWith(this string @this, char value) => @this.StartsWith(value);
-        
+
         [EditorBrowsable(EditorBrowsableState.Never)]
         public static partial bool EndsWith(this string @this, char value) => @this.EndsWith(value);
 

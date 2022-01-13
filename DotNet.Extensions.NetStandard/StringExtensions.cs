@@ -12,7 +12,7 @@ namespace System
             {
                 null => throw new ArgumentNullException(nameof(input)),
                 "" => throw new ArgumentException($"{nameof(input)} cannot be empty", nameof(input)),
-                _ => string.Concat(input[0].ToString().ToUpper(), input.Substring(1))
+                _ => string.Concat(input[0].ToString().ToUpper(), input[1..])
             };
 
         public static partial string FirstCharToLower(this string input) =>
@@ -20,7 +20,7 @@ namespace System
             {
                 null => throw new ArgumentNullException(nameof(input)),
                 "" => throw new ArgumentException($"{nameof(input)} cannot be empty", nameof(input)),
-                _ => string.Concat(input[0].ToString().ToLower(), input.Substring(1))
+                _ => string.Concat(input[0].ToString().ToLower(), input[1..])
             };
 
         public static partial string Join(this string[] input, string separator) =>
@@ -37,7 +37,7 @@ namespace System
 
         public static partial bool StartsWith(this string @this, char value) => @this[0].Equals(value);
 
-        public static partial bool EndsWith(this string @this, char value) => @this[@this.Length - 1].Equals(value);
+        public static partial bool EndsWith(this string @this, char value) => @this[^1].Equals(value);
 
         public static partial string[] Split(this string input, char separator) =>
             input.Split(new char[] { separator });
