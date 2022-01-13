@@ -16,6 +16,7 @@
     <PackageLicenseExpression>Unlicense</PackageLicenseExpression>
     <PackageIcon>Extensions-512x512.png</PackageIcon>
     <AssemblyName>MikaelDui.Extensions</AssemblyName>
+	<Product>Mikael Dúi's .NET Extensions</Product>
   </PropertyGroup>
 
   <ItemGroup>
