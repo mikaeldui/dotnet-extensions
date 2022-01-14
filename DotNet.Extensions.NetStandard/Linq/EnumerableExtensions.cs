@@ -4,19 +4,19 @@ using System.Text;
 
 namespace System.Linq
 {
-    public static partial class EnumerableExtensions
+    public static class EnumerableExtensions
     {
-        public static partial IEnumerable<T> SkipLast<T>(this T[] input, int count) =>
+        public static IEnumerable<T> SkipLast<T>(this T[] input, int count) =>
             input.TakeWhile((item, index) => index < input.Length - count);
 
-        public static partial IEnumerable<T> SkipLast<T>(this T[] input) => input.SkipLast(1);
+        public static IEnumerable<T> SkipLast<T>(this T[] input) => input.SkipLast(1);
 
-        public static partial IEnumerable<T> SkipLast<T>(this ICollection<T> input, int count) =>
+        public static IEnumerable<T> SkipLast<T>(this ICollection<T> input, int count) =>
             input.TakeWhile((item, index) => index < input.Count - count);
 
-        public static partial IEnumerable<T> SkipLast<T>(this ICollection<T> input) => input.SkipLast(1);
+        public static IEnumerable<T> SkipLast<T>(this ICollection<T> input) => input.SkipLast(1);
 
-        public static partial IEnumerable<T> SkipLast<T>(this IEnumerable<T> input, int count)
+        public static IEnumerable<T> SkipLast<T>(this IEnumerable<T> input, int count)
         {
             switch (input)
             {
@@ -45,7 +45,7 @@ namespace System.Linq
             }
         }
 
-        public static partial IEnumerable<T> SkipLast<T>(this IEnumerable<T> input)
+        public static IEnumerable<T> SkipLast<T>(this IEnumerable<T> input)
         {
             switch (input)
             {

@@ -35,6 +35,10 @@
     <PackageReference Include="IndexRange" Version="*" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Linq\" />
+  </ItemGroup>
+
     <Import Project="..\DotNet.Extensions.Net\DotNet.Extensions.Net.projitems" Label="Shared" Condition="'$(TargetFramework.TrimEnd(`.0123456789`))' != 'netstandard'" />
 	
     <Import Project="..\DotNet.Extensions.NetStandard\DotNet.Extensions.NetStandard.projitems" Label="Shared" Condition="'$(TargetFramework.TrimEnd(`.0123456789`))' == 'netstandard'" />
